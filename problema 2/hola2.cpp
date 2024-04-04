@@ -3,9 +3,15 @@
 #include <string>
 using namespace std;
 int main(){
-    Anio fechaUno{50,50,2051};
-    fechaUno.isLeapYear(2020);
+    int dia=20;
+    int mes=5;
+    int anio=2048;
+    Anio fechaUno{dia,mes,anio};
+    fechaUno.isLeapYear(anio);
     cout<<endl;
+
+    cout<<"si es 1 es un anio bisiesto, si es 0 no es bisisesto."<<endl;
+    cout<<fechaUno.isLeapYear(anio);
     fechaUno.displayDate();
    
     return 0;
