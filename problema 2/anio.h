@@ -57,6 +57,7 @@ class Anio {
     }
     
     void displayDate() const{
+        cout<<endl;
         cout<<day << " / " <<month<<"  / "<<year;
     }
 
