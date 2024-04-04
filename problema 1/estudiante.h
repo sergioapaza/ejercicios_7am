@@ -28,14 +28,7 @@ class Student {
         return age;
     }
     bool isOlder(int a) const{
-        if(a<=18){
-            return true;
-        }
-        else{
-            return false;
-        }
-
-
+        return (a<=18);
     }
 
 
