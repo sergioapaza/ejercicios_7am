@@ -67,10 +67,11 @@ string Mayu(string a){
 int fib(int a){
     int t1=1;
     int t2=1;
-    int t3;
+    int t3=1;
 
     for(int i=1;i<=a;i++){
-        if( i == 1 || i==2){            
+        
+        if( i == 1 ){            
             continue; 
         }
         t3 = t1 + t2;
@@ -110,7 +111,7 @@ int main(){
         cout << numero << " NO ES PRIMO" << endl;
     }*/
 
-    cout<<fib(cant);
+    cout<<fib(cant)<<endl;
     cout<<fibRecursivo(cant);
 
 
