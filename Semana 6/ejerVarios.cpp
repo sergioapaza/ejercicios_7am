@@ -65,13 +65,7 @@ string Mayu(string a){
 }
 
 int fib(int a){
-
-    if(a==0 || a==1){
-        return 1;
-    }else{
-        return fib(a-2)+fib(a-1);
-    }
-    /*int t1=1;
+    int t1=1;
     int t2=1;
     int t3;
 
@@ -83,7 +77,15 @@ int fib(int a){
         t1 = t2;
         t2 = t3;
     }
-    cout << "El " << a << " fib es: " << t3;*/
+    return t3;
+}
+
+int fibRecursivo(int a){
+    if(a==0 || a==1){
+        return 1;
+    }else{
+        return fib(a-2)+fib(a-1);
+    }
 }
 
 int main(){
@@ -109,7 +111,7 @@ int main(){
     }*/
 
     cout<<fib(cant);
-
+    cout<<fibRecursivo(cant);
 
 
     return 0;
