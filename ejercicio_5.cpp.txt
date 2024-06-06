@@ -1,0 +1,98 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+//creo mi clase
+class Employee {
+public:
+    //inicializo mis funciones miembro
+    Employee(const string&, const string&);
+    ~Employee();
+    string getFirstName() const;
+    string getLastName() const;
+    static unsigned int getCount();
+
+private:
+    //creo mis atributos
+    string firstName;
+    string lastName;
+    static unsigned int count;
+};
+
+// a
+// declaro mis funciones miembro
+unsigned int Employee::count = 0;
+
+Employee::Employee(const string &firstName, const string &lastName) {
+    this->firstName = firstName;
+    this->lastName = lastName;
+    ++count;
+}
+
+Employee::~Employee() {
+    --count;
+}
+
+unsigned int Employee::getCount() {
+    return count;
+}
+
+int main() {
+    // b
+    // creo 5 objetos en el stack
+    Employee employees[5] = {
+        Employee("Ebert", "Condori"),
+        Employee("Rodolfo", "Casquino"),
+        Employee("Juan", "Carlos"),
+        Employee("Denis", "Talavera"),
+        Employee("Diego", "Escobar")
+    };
+
+    // c
+    // creo 5 objetos en el heap
+    Employee *employees_2 = new Employee[5]{
+        Employee("Ebert", "Condori"),
+        Employee("Rodolfo", "Casquino"),
+        Employee("Juan", "Carlos"),
+        Employee("Denis", "Talavera"),
+        Employee("Diego", "Escobar")
+    };
+
+    // d
+    // imprime 10 empleados
+    cout << "Numero actual de count (empleados): " << Employee::getCount() << endl; // imprime 10
+
+    // e
+    // elimino con la funcion delete para new y utilizo el destructor de mi clase
+    delete[] employees_2;
+
+    // f
+    // imprime 5 porque los objetos en el stack siguen existiendo
+    cout << "Numero actual de count (empleados): " << Employee::getCount() << endl; // imprime 5
+
+    // g
+    // creo 2 objetos utilizando new para guardar en heap
+    Employee* obj1 = nullptr;
+    Employee* obj2 = nullptr;
+
+    if (true) {
+        obj1 = new Employee("Ebert", "Condori");
+        obj2 = new Employee("Luis", "Casquino");
+    }
+
+    // h
+    // imprime 7 porque se han añadido dos nuevos objetos
+    cout << "Numero actual de count (empleados): " << Employee::getCount() << endl; // imprime 7
+
+    // i
+    // elimino los objetos del heap con delete
+    delete obj1;
+    delete obj2;
+
+    // j
+    // imprime 5 porque se eliminaron los dos últimos objetos dinámicos
+    cout << "Numero actual de count (empleados): " << Employee::getCount() << endl; // imprime 5
+
+    return 0;
+}
